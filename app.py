@@ -35,8 +35,8 @@ def get_points_count():
 
 
 def validate_code(code):
-    """Validate that code is exactly 11 digits"""
-    return bool(re.fullmatch(r'^\d{11}$', code))
+    """Validate that code is exactly 12 digits"""
+    return bool(re.fullmatch(r'^\d{12}$', code))
 
 
 def extract_code_from_image(image_path):
@@ -44,21 +44,21 @@ def extract_code_from_image(image_path):
         results = reader.readtext(image_path)
         all_text = ' '.join([res[1] for res in results])
 
-        # Find all sequences of 11+ digits
-        digit_sequences = re.findall(r'\d{11,}', all_text)
+        # Find all sequences of 12+ digits
+        digit_sequences = re.findall(r'\d{12,}', all_text)
 
-        # Check for invalid codes (more than 11 digits)
+        # Check for invalid codes (more than 12 digits)
         for seq in digit_sequences:
-            if len(seq) > 11:
-                return {'valid': False, 'error': 'รหัสไม่ถูกต้อง! พบตัวเลขมากกว่า 11 หลัก'}
+            if len(seq) > 12:
+                return {'valid': False, 'error': 'รหัสไม่ถูกต้อง! โปรดลองอีกครั้ง'}
 
-        # Find exact 11-digit codes
-        matches = re.findall(r'\b\d{11}\b', all_text)
+        # Find exact 12-digit codes
+        matches = re.findall(r'\b\d{12}\b', all_text)
 
         if matches:
             return {'valid': True, 'code': matches[0]}
 
-        return {'valid': False, 'error': 'ไม่พบรหัส 11 หลักในภาพ'}
+        return {'valid': False, 'error': 'ไม่พบรหัส! โปรดลองอีกครั้ง'}
     except Exception as e:
         print(f"Error processing image: {e}")
         return {'valid': False, 'error': 'เกิดข้อผิดพลาดในการประมวลผลภาพ'}

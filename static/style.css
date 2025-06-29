@@ -25,6 +25,49 @@ body {
     cursor: pointer;
 }
 
+.error-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1005;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 80%;
+    width: 320px;
+}
+
+.error-modal-content h3 {
+    color: #d12b2b;
+    margin-top: 0;
+}
+
+.error-modal-content p {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #444;
+}
+
+.error-modal-content button {
+    background: #d12b2b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
 .logo {
     width: 70%;
     max-width: 300px;
