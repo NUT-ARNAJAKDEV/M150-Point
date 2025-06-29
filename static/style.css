@@ -1,0 +1,269 @@
+body {
+    margin: 0;
+    font-family: 'Sarabun', sans-serif;
+    background-color: #e1b65c;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+:root {
+    --container-width: 400px;
+    /* กำหนดค่าความกว้างไว้ที่ root */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 450px;
+    /* กำหนดความกว้างสูงสุด */
+    margin: 0 auto;
+}
+
+.logo {
+    width: 70%;
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+.points-card {
+    background: white;
+    border-radius: 15px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    /* ให้ padding ไม่เพิ่มความกว้าง */
+}
+
+.points-label {
+    font-size: 14px;
+    color: #555;
+}
+
+.points-value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #d12b2b;
+    transition: all 0.3s ease;
+}
+
+
+.points-value.updated {
+    transform: scale(1.1);
+    color: #d12b2b;
+    font-weight: bold;
+}
+
+/* สไตล์อื่นๆ ที่มีอยู่เดิม */
+
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    /* ให้ padding ไม่เพิ่มความกว้าง */
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.code-image {
+    width: 100px;
+    margin: 10px auto;
+    display: block;
+}
+
+.capture-button {
+    background: linear-gradient(to bottom, #d12b2b, #b71c1c);
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 16px;
+    margin: 15px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.capture-button img {
+    width: 20px;
+    height: 20px;
+}
+
+/* ปรับส่วน input-group ให้กว้างเท่าปุ่ม */
+.input-container {
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    /* จัดให้ label และ input อยู่ในแนวเดียวกัน */
+    gap: 10px;
+    /* ระยะห่างระหว่าง label และ input */
+    margin-bottom: 18px;
+    width: 100%;
+}
+
+.input-group label {
+    font-size: 14px;
+    font-weight: bold;
+    min-width: 60px;
+    /* กำหนดความกว้างขั้นต่ำให้ label */
+    margin-bottom: 0;
+    /* ลบ margin-bottom ที่มีอยู่ */
+}
+
+.input-group .input-wrapper {
+    position: relative;
+    flex-grow: 1;
+    /* ทำให้ input-wrapper ขยายเต็มพื้นที่ที่เหลือ */
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 40px 12px 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1.8px solid #ccc;
+    box-sizing: border-box;
+}
+
+.input-group .icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.input-group .icon img {
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+}
+
+.submit-button {
+    background: #e5e5e5;
+    color: #999;
+    border: none;
+    padding: 14px;
+    width: 100%;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: not-allowed;
+    margin-top: 10px;
+}
+
+.camera-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.camera-container {
+    width: 100%;
+    max-width: 400px;
+    /* กำหนดขนาดสูงสุด */
+    aspect-ratio: 1/1;
+    /* ทำให้เป็นสี่เหลี่ยมจัตุรัส */
+    text-align: center;
+    position: relative;
+}
+
+#capture-btn,
+#close-camera {
+    margin: 15px 5px 0;
+    padding: 10px 20px;
+    background: #d12b2b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+
+.camera-square {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    /* ทำให้สูงเท่ากับความกว้าง */
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+#camera-view {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+.camera-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+/* สำหรับ mobile */
+@media (max-width: 480px) {
+    .points-display {
+        padding: 10px 15px;
+        max-width: 280px;
+    }
+
+    .points-label {
+        font-size: 13px;
+    }
+
+    .points-value {
+        font-size: 16px;
+    }
+
+    .card {
+        padding: 30px 20px;
+    }
+
+    .capture-button,
+    .input-group input,
+    .submit-button {
+        font-size: 15px;
+    }
+}
